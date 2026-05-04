@@ -523,8 +523,14 @@ window.doLogin=async function(){
   const pass=document.getElementById('uPass').value.trim();
   const err=document.getElementById('loginErr');
   err.style.display='none';
-  try{await signInWithEmailAndPassword(auth,email,pass);}
-  catch(e){err.style.display='block';}
+  if(!email||!pass){err.textContent='ইমেইল ও পাসওয়ার্ড দিন';err.style.display='block';return;}
+  try{
+    await signInWithEmailAndPassword(auth,email,pass);
+  }catch(e){
+    console.error('Login error:',e.code,e.message);
+    err.textContent='লগইন হয়নি: '+e.code;
+    err.style.display='block';
+  }
 };
 
 window.doLogout=async function(){await signOut(auth);};
