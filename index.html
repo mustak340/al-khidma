@@ -425,6 +425,11 @@ tr:hover td{background:rgba(82,183,136,.04)}
 
 <div class="toast" id="toast"></div>
 
+<script>
+function openLoginModal(){document.getElementById('loginModal').classList.add('open');}
+function closeLoginModal(){document.getElementById('loginModal').classList.remove('open');}
+function scrollTo(sel){document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});}
+</script>
 <script type="module">
 import{initializeApp}from"https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
 import{getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
